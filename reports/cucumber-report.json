@@ -1,0 +1,171 @@
+[
+  {
+    "description": "  As a registered Juice Shop customer\n  I want to add products to my basket\n  So that I can purchase multiple products",
+    "elements": [
+      {
+        "description": "",
+        "id": "owasp-juice-shop-shopping-basket-and-checkout;add-two-products-to-the-basket-and-proceed-to-checkout",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Add two products to the basket and proceed to checkout",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 12820827599
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I open the OWASP Juice Shop home page",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:16"
+            }
+          },
+          {
+            "result": {
+              "status": "failed",
+              "duration": 3320468700,
+              "error_message": "page.waitForTimeout: Target page, context or browser has been closed\n    at World.<anonymous> (C:\\Users\\sakth\\OneDrive\\Desktop\\Playwright_Demo\\src\\tests\\stepsDefinitions\\addToCart.steps.ts:48:14)"
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I log in with valid credentials",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:36"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I add two products to the basket",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:53"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I open the shopping basket",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:68"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click on the Checkout button",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:78"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "I should see the address page",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:89"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I fill in the delivery address details",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:100"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I should select one address from the list",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:132"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I should see the payment page",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:145"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should select a payment method",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:169"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2992007099
+            },
+            "keyword": "After",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 644200
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "owasp-juice-shop-shopping-basket-and-checkout",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "OWASP Juice Shop Shopping Basket and Checkout",
+    "tags": [],
+    "uri": "src\\tests\\features\\addToCart.feature"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "name": "playwright_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config config/cucumber.json \"src/tests/features/**/*.feature\"",
+    "login": "cucumber-js --config config/cucumber.json src/tests/features/OWASPlogin.feature",
+    "addToCart": "cucumber-js --config config/cucumber.json src/tests/features/addToCart.feature",
+    "checkout": "cucumber-js --config config/cucumber.json src/tests/features/checkout.feature"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.3.0",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9"
+  }
+}

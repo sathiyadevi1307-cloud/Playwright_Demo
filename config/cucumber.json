@@ -1,0 +1,22 @@
+{
+    "default" :{
+    
+    "require": [
+      "src/tests/stepsDefinitions/**/*.ts"
+    ],
+     "requireModule": [
+  "tsx/cjs"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+     "publishQuiet": true,
+    "dryRun": false,
+    "format": [
+      "progress",
+      "json:reports/cucumber-report.json",
+      "html:reports/cucumber-report.html"
+    ]
+
+}
+}
