@@ -12,7 +12,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 12820827599
+              "duration": 11335474799
             },
             "arguments": [],
             "keyword": "Given ",
@@ -24,9 +24,8 @@
           },
           {
             "result": {
-              "status": "failed",
-              "duration": 3320468700,
-              "error_message": "page.waitForTimeout: Target page, context or browser has been closed\n    at World.<anonymous> (C:\\Users\\sakth\\OneDrive\\Desktop\\Playwright_Demo\\src\\tests\\stepsDefinitions\\addToCart.steps.ts:48:14)"
+              "status": "passed",
+              "duration": 3456783799
             },
             "arguments": [],
             "keyword": "When ",
@@ -38,8 +37,9 @@
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "failed",
+              "duration": 865983500,
+              "error_message": "page.waitForTimeout: Target page, context or browser has been closed\n    at World.<anonymous> (C:\\Users\\sakth\\OneDrive\\Desktop\\Playwright_Demo\\src\\tests\\stepsDefinitions\\addToCart.steps.ts:60:14)"
             },
             "arguments": [],
             "keyword": "When ",
@@ -143,7 +143,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 2992007099
+              "duration": 2120226399
             },
             "keyword": "After",
             "hidden": true
@@ -151,7 +151,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 644200
+              "duration": 3692900
             },
             "keyword": "After",
             "hidden": true
