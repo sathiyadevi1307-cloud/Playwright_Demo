@@ -8,8 +8,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-
-     env:
+    env:
       JUICESHOP_USERNAME: ${{ secrets.JUICESHOP_USERNAME }}
       JUICESHOP_PASSWORD: ${{ secrets.JUICESHOP_PASSWORD }}
       
