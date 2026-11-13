@@ -35,9 +35,7 @@ Given("I open the OWASP Juice Shop home page", async function () {
 
 When("I log in with valid credentials", async function () {
 
-  //   await page.locator("#navbarAccount").click();
-
-  //   await page.locator("#navbarLoginButton").click();
+  
 
   await page.locator('input[id="email"]').fill(process.env.JUICESHOP_USERNAME!);
 
@@ -135,6 +133,7 @@ Then("I should select one address from the list", async function () {
   await page.waitForTimeout(2000);
   await page.locator("//span[text()='Continue']").click();
   await page.waitForTimeout(2000);
+  //delivery speed
   await page.locator('//input[@type="radio"]').first().click();
   await page.waitForTimeout(2000);
   await page.locator("//span[text()='Continue']").click();
