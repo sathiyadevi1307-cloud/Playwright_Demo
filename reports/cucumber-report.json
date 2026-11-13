@@ -12,7 +12,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 11335474799
+              "duration": 10241725500
             },
             "arguments": [],
             "keyword": "Given ",
@@ -25,7 +25,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 3456783799
+              "duration": 3704793100
             },
             "arguments": [],
             "keyword": "When ",
@@ -37,113 +37,112 @@
           },
           {
             "result": {
-              "status": "failed",
-              "duration": 865983500,
-              "error_message": "page.waitForTimeout: Target page, context or browser has been closed\n    at World.<anonymous> (C:\\Users\\sakth\\OneDrive\\Desktop\\Playwright_Demo\\src\\tests\\stepsDefinitions\\addToCart.steps.ts:60:14)"
+              "status": "passed",
+              "duration": 4137456000
             },
             "arguments": [],
             "keyword": "When ",
             "line": 13,
             "name": "I add two products to the basket",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:53"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:51"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 2089386800
             },
             "arguments": [],
             "keyword": "And ",
             "line": 14,
             "name": "I open the shopping basket",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:68"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:66"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 3003360700
             },
             "arguments": [],
             "keyword": "When ",
             "line": 15,
             "name": "I click on the Checkout button",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:78"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:76"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 3166700200
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
             "name": "I should see the address page",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:89"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:87"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 6516326999
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 17,
             "name": "I fill in the delivery address details",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:100"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:98"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 8270765200
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 18,
             "name": "I should select one address from the list",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:132"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:130"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 8218618600
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 19,
             "name": "I should see the payment page",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:145"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:144"
             }
           },
           {
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 8183299800
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 20,
             "name": "I should select a payment method",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:169"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:168"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 2120226399
+              "duration": 1232599300
             },
             "keyword": "After",
             "hidden": true
@@ -151,7 +150,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 3692900
+              "duration": 151099
             },
             "keyword": "After",
             "hidden": true

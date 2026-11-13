@@ -167,7 +167,7 @@ Then("I should see the payment page", async function () {
 
 Then("I should select a payment method", async function () {
 
-  await page.locator('//input[@class="mdc-radio__native-control"]').click();
+  await page.locator('//input[@class="mdc-radio__native-control"]').first().click();
   await page.waitForTimeout(2000);
   await page.locator("//span[text()='Continue']").click();
   await expect(
