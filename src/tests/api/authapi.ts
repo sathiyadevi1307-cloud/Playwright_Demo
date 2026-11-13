@@ -1,23 +1,35 @@
+
 import { request } from '@playwright/test';
 import { apiConfig } from '../../../config/apiConfig';
 
 export class AuthApi {
 
-    async login() {
-        console.log("email:", apiConfig.email);
-        console.log("password:", apiConfig.password);
+    
+async login() {
 
-        const apiContext = await request.newContext({
-            baseURL: apiConfig.baseURL
-        });
+    const username = process.env.JUICESHOP_USERNAME?.trim();
+    const password = process.env.JUICESHOP_PASSWORD?.trim();
 
-        return await apiContext.post('/rest/user/login', {
-    data: {
-        email: 'sathiyadevi1307@gmail.com',
-        password: 'mANI@13072002'
+    if (!username || !password) {
+        throw new Error("Juice Shop credentials are missing!");
     }
 
-        
-        });
-    }
+    console.log("Username available:", !!username);
+    console.log("Password available:", !!password);
+    console.log("Username length:", username.length);
+    console.log("Password length:", password.length);
+
+    const apiContext = await request.newContext({
+        baseURL: apiConfig.baseURL
+    });
+
+    const response = await apiContext.post('/rest/user/login', {
+        data: {
+            email: username,
+            password: password
+        }
+    });
+
+    return response;
+}
 }
