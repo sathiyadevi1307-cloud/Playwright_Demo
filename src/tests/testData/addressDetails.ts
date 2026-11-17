@@ -1,5 +1,5 @@
 
-export const addressData = {
+export const addressData = [{
   country: 'India',
   name: 'Manisha',
   mobile: '9876543210',
@@ -7,7 +7,16 @@ export const addressData = {
   address: '123, Main Street, Chennai',
   city: 'Chennai',
   state: 'Tamil Nadu'
-};
+},
+ {
+  country: 'India',
+  name: 'Smriti',
+  mobile: '7000006644',
+  zipCode: '111110',
+  address: '145, Main Street, Nagpur',
+  city: 'Nagpur',
+  state: 'Maharastra'
+}];
 
 export const cardData = {
   name: 'Manisha',
