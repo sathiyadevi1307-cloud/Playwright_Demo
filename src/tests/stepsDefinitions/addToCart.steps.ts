@@ -97,7 +97,7 @@ Then("I should see the address page", async function () {
 
 Then("I fill in the delivery address details", async function () {
 
-  const data = addressData;
+  const data = addressData[0];
 
 
   await page.locator("//input[@placeholder='Please provide a country.']").fill(data.country);
@@ -148,15 +148,16 @@ Then("I should see the payment page", async function () {
   await addNewCard.click();
   await page.waitForTimeout(2000);
 
+  const card = cardData[0];
 
-  await page.locator('//input[contains(@id,"mat-input-")]').first().fill(cardData.name);
+  await page.locator('//input[contains(@id,"mat-input-")]').first().fill(card.name);
 
-  await page.locator('//mat-label[text()="Card Number"]').fill(cardData.cardNumber);
+  await page.locator('//mat-label[text()="Card Number"]').fill(card.cardNumber);
 
 
-  await page.locator('//select[contains(@id,"mat-input-")]').first().selectOption(cardData.expiryMonth);
+  await page.locator('//select[contains(@id,"mat-input-")]').first().selectOption(card.expiryMonth);
 
-  await page.locator('//select[contains(@id,"mat-input-")]').nth(1).selectOption(cardData.expiryYear);
+  await page.locator('//select[contains(@id,"mat-input-")]').nth(1).selectOption(card.expiryYear);
   await page.waitForTimeout(3000);
   await page.locator('//span[text()=" Submit "]').click();
   await page.waitForTimeout(3000);
@@ -164,6 +165,7 @@ Then("I should see the payment page", async function () {
 
 
 });
+
 
 Then("I should select a payment method", async function () {
 

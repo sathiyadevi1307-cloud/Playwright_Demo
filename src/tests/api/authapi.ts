@@ -1,8 +1,9 @@
 
 import { request } from '@playwright/test';
 import { apiConfig } from '../../../config/apiConfig';
-
+ 
 export class AuthApi {
+<<<<<<< Updated upstream
 
     
 async login() {
@@ -33,3 +34,28 @@ async login() {
     return response;
 }
 }
+=======
+ 
+    async login() {
+ 
+        const username = process.env.JUICESHOP_USERNAME;
+        const password = process.env.JUICESHOP_PASSWORD;
+ 
+        if (!username || !password) {
+            throw new Error("Juice Shop credentials are missing!");
+        }
+ 
+        const apiContext = await request.newContext({
+            baseURL: apiConfig.baseURL
+        });
+ 
+        return await apiContext.post('/rest/user/login', {
+            data: {
+                email: username,
+                password: password
+            }
+        });
+    }
+}
+    
+>>>>>>> Stashed changes
