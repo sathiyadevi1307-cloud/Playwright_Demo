@@ -4,13 +4,14 @@ import { chromium, Browser, Page } from "playwright";
 import { SearchProductPage } from '../../pages/searchProductPages';
 import { addressData } from '../testData/addressDetails';
 import { cardData } from '../testData/cardData';
+import { LoginPage } from '../../pages/LoginPage';
 import dotenv from 'dotenv';
 dotenv.config();
 
 let browser: Browser;
 let page: Page;
+let loginPage: LoginPage;
 let searchProductPage: SearchProductPage;
-
 
 // ---------------- BROWSER SETUP ----------------
 
@@ -26,9 +27,10 @@ Given("I open the login page", async function () {
 
   page = await context.newPage();
 
+  loginPage = new LoginPage(page);
   searchProductPage = new SearchProductPage(page);
 
-  await searchProductPage.openLoginPage();
+  await loginPage.navigateToLoginPage();
 });
 
 
@@ -36,10 +38,17 @@ Given("I open the login page", async function () {
 
 Given("I log in with credentials", async function () {
 
-  await searchProductPage.login(
-    process.env.JUICESHOP_USERNAME!,
+  await loginPage.enterEmail(
+    process.env.JUICESHOP_USERNAME!
+  );
+
+  await loginPage.enterPassword(
     process.env.JUICESHOP_PASSWORD!
   );
+
+  await loginPage.clickRememberMeCheckbox();
+
+  await loginPage.clickLoginButton();
 });
 
 

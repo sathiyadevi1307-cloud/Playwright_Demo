@@ -7,7 +7,7 @@ export class SearchProductPage {
 
   // ---------------- LOGIN ----------------
 
-  async openLoginPage() {
+  /*async openLoginPage() {
     await this.page.goto("https://preview.owasp-juice.shop/#/login");
     await this.page.waitForTimeout(3000);
   }
@@ -24,7 +24,7 @@ export class SearchProductPage {
     await this.page.locator("//span[text()=' Log in ']").click();
 
     await this.page.waitForTimeout(3000);
-  }
+  }*/
 
   // ---------------- SEARCH PRODUCT ----------------
 
