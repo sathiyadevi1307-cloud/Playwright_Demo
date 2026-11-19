@@ -14,3 +14,8 @@ Feature: OWASP Juice Shop customer login
     And I should see the Remember me checkbox
     And I should see the "Log in" button
     
+
+  Scenario: Login with invalid credentials
+    When I enter invalid email and password
+    And I click the login button
+    Then I should see the invalid login error message

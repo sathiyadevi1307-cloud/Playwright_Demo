@@ -34,17 +34,12 @@ Given("I open the login page", async function () {
 });
 
 
-// ---------------- LOGIN ----------------
 
 Given("I log in with credentials", async function () {
 
-  await loginPage.enterEmail(
-    process.env.JUICESHOP_USERNAME!
-  );
+  await loginPage.enterEmail(process.env.JUICESHOP_USERNAME!);
 
-  await loginPage.enterPassword(
-    process.env.JUICESHOP_PASSWORD!
-  );
+  await loginPage.enterPassword(process.env.JUICESHOP_PASSWORD!);
 
   await loginPage.clickRememberMeCheckbox();
 
@@ -52,7 +47,6 @@ Given("I log in with credentials", async function () {
 });
 
 
-// ---------------- SEARCH PRODUCT ----------------
 
 When("I click on the search icon", async function () {
 
@@ -66,7 +60,6 @@ Then("the search bar should be displayed", async function () {
 });
 
 
-// ---------------- ENTER PRODUCT NAME ----------------
 
 When("I enter {string} in the search bar", async function (productName: string) {
 
@@ -74,23 +67,17 @@ When("I enter {string} in the search bar", async function (productName: string) 
 });
 
 
-// ---------------- VERIFY SEARCH RESULTS ----------------
-
 Then("the search results should display products matching {string}", async function (productName: string) {
 
   await searchProductPage.verifySearchResults(productName);
 });
 
 
-// ---------------- ADD PRODUCT TO CART ----------------
-
 Then("I click on the add to cart button for the product {string}", async function (productName: string) {
 
   await searchProductPage.addProductToCart(productName);
 });
 
-
-// ---------------- NAVIGATE TO SHOPPING CART ----------------
 
 When("I navigate to the shopping cart", async function () {
 
@@ -104,23 +91,17 @@ Then("I should see {string} in the cart", async function (productName: string) {
 });
 
 
-// ---------------- INCREASE PRODUCT QUANTITY ----------------
-
 When("I increase the quantity of {string} to {int}", async function (productName: string, quantity: number) {
 
   await searchProductPage.increaseProductQuantity(productName, quantity);
 });
 
 
-// ---------------- CHECKOUT ----------------
-
 When("I click on the checkout button", async function () {
 
   await searchProductPage.clickCheckout();
 });
 
-
-// ---------------- DELIVERY ADDRESS ----------------
 
 Then("I should be on the address page", async function () {
 
@@ -136,15 +117,12 @@ When("I enter the delivery address details", async function () {
 });
 
 
-// ---------------- SELECT DELIVERY ADDRESS AND METHOD ----------------
 
 Then("I should be able to select the address from the list", async function () {
 
   await searchProductPage.selectDeliveryAddressAndMethod();
 });
 
-
-// ---------------- PAYMENT DETAILS ----------------
 
 Then("I should be able to see the payment page", async function () {
 
@@ -154,7 +132,6 @@ Then("I should be able to see the payment page", async function () {
 });
 
 
-// ---------------- SELECT PAYMENT METHOD ----------------
 
 Then("I should be able to select a payment method", async function () {
 
@@ -166,7 +143,7 @@ Then("I should be able to select a payment method", async function () {
 });
 
 
-// ---------------- BROWSER CLEANUP ----------------
+
 
 After(async function () {
 

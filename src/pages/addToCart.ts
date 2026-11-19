@@ -1,11 +1,8 @@
-
 import { Page, expect } from '@playwright/test';
 
 export class JuiceShopPage {
 
     constructor(private page: Page) {}
-
-    // ---------------- LOGIN ----------------
 
     async openLoginPage() {
         await this.page.goto('https://preview.owasp-juice.shop/#/login',
@@ -16,12 +13,9 @@ export class JuiceShopPage {
     async login(email: string, password: string) {
         await this.page.locator('input[id="email"]').fill(email);
         await this.page.locator('input[id="password"]').fill(password);
-
         await this.page.locator("//span[text()=' Log in ']").click();
     }
-
-    // ---------------- ADD PRODUCTS ----------------
-
+    
     async addTwoProductsToBasket() {
         const addToBasketButtons = this.page.locator( "//span[text()=' Add to Basket ']");
 
@@ -29,7 +23,6 @@ export class JuiceShopPage {
         await addToBasketButtons.nth(2).click();
     }
 
-    //basket
     async openShoppingBasket() {
         await this.page.locator('//span[text()=" Your Basket"]').click();
     }
@@ -38,11 +31,8 @@ export class JuiceShopPage {
         await this.page.locator('#checkoutButton').click();
     }
 
-    //Delivery address details
-
     async openAddNewAddress() {
         await this.page.locator("//span[text()='Add New Address']").click();
-
         await expect(this.page.getByRole('heading', { name: 'Add New Address' })).toBeVisible();
     }
 
@@ -84,29 +74,20 @@ export class JuiceShopPage {
         );
         await state.fill(data.state);
         await expect(state).toHaveValue(data.state);
-
         await this.page.locator("//span[text()=' Submit ']").click();
     }
 
-    // ---------------- SELECT DELIVERY ADDRESS ----------------
-
-    async selectDeliveryAddress() {
+   async selectDeliveryAddress() {
         await this.page.locator('//input[@type="radio"]').first().click();
-
         await this.page.locator("//span[text()='Continue']").click();
     }
-
-    // ---------------- SELECT DELIVERY METHOD ----------------
-
+    
     async selectDeliveryMethod() {
         await this.page.locator('//input[@type="radio"]').first().click();
-
         await this.page.locator("//span[text()='Continue']").click();
     }
 
-    // ---------------- PAYMENT DETAILS ----------------
-
-    async openAddNewCard() {
+   async openAddNewCard() {
         const addNewCard = this.page.locator("//mat-panel-title[text()=' Add new card ']");
 
         await expect(addNewCard).toBeVisible();
@@ -120,41 +101,45 @@ export class JuiceShopPage {
         expiryYear: string;
     }) {
         await this.page.locator('//input[contains(@id,"mat-input-")]').first().fill(data.name);
-
-        // Locate the input associated with the Card Number label
         await this.page.getByLabel('Card Number').fill(data.cardNumber);
 
         const expiryDropdowns = this.page.locator('//select[contains(@id,"mat-input-")]');
 
         await expiryDropdowns.first().selectOption(data.expiryMonth);
         await expiryDropdowns.nth(1).selectOption(data.expiryYear);
-
         await this.page.locator('//span[text()=" Submit "]').click();
     }
 
-    // ---------------- SELECT PAYMENT METHOD ----------------
-
     async selectPaymentMethod() {
         await this.page.locator('//input[@class="mdc-radio__native-control"]').first().click();
-
         await this.page.locator("//span[text()='Continue']").click();
     }
 
-    // ---------------- PLACE ORDER ----------------
-
     async placeOrder() {
         await expect(this.page.locator("//h1[text()=' Your Basket ']")).toBeVisible();
-
         await this.page.locator("//span[text()='Place your order and pay']").click();
     }
 
     async verifyOrderSuccess() {
         const thankYouMessage = this.page.locator("//h1[text()='Thank you for your purchase!']");
-
         await expect(thankYouMessage).toBeVisible();
 
         const message = await thankYouMessage.textContent();
-
         console.log('Order Message:', message);
     }
+    async trackOrder(){
+
+        const order = this.page.locator("//a[text()='Track Orders']");
+        await expect(order).toBeVisible();
+        await order.click();
+        const products = this.page.locator("//mat-row[@class='mat-mdc-row mdc-data-table__row cdk-row']");
+
+        await expect(products.first()).toBeVisible();
+        const productDetails = await products.allTextContents();
+        
+        console.log("Track Order Products:");
+
+    
+}
+
 }

@@ -15,41 +15,32 @@ test('Get Invalid Booking Id', async () => {
         "Invalid booking id verified"
     );
 });
+
 test('Update Booking With Invalid Token', async () => {
 
     const bookingApi = new BookingApi();
 
     const response =
-        await bookingApi.updateBooking(
-            1,
-            'invalidtoken123',
+        await bookingApi.updateBooking(1,'invalidtoken123',
             {
                 firstname: 'Test'
             }
         );
 
-    expect(response.status())
-        .toBe(403);
+    expect(response.status()).toBe(403);
 });
+
 test('Get Booking Using Negative Id', async () => {
 
     const bookingApi = new BookingApi();
 
-    const response =
-        await bookingApi.getBooking(-1);
+    const response =await bookingApi.getBooking(-1);
 
-    console.log(
-        response.status()
-    );
-    const invalidPayload = {
-
-   firstname: '',
-
-   lastname: '',
-
-   totalprice: null
-};
+    console.log(response.status());
+    const invalidPayload = {firstname: '',lastname: '',totalprice: null};
 });
+
+
 test('Create Booking With Invalid Payload', async () => {
 
     const bookingApi = new BookingApi();

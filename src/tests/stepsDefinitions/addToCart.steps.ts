@@ -1,11 +1,9 @@
-
 import {Given,When,Then,After,setDefaultTimeout} from "@cucumber/cucumber";
-
 import { chromium, Browser, Page } from "playwright";
 import { JuiceShopPage } from '../../pages/juiceShop';
 import { addressData } from '../testData/addressDetails';
 import { cardData } from '../testData/cardData';
-
+import { LoginPage } from "../../pages/LoginPage";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -14,9 +12,8 @@ setDefaultTimeout(60000);
 let browser: Browser;
 let page: Page;
 let juiceShopPage: JuiceShopPage;
+let loginPage: LoginPage;
 
-
-// ---------------- BROWSER SETUP ----------------
 
 Given("I open the OWASP Juice Shop home page", async function () {
 
@@ -33,31 +30,28 @@ Given("I open the OWASP Juice Shop home page", async function () {
     page = await context.newPage();
 
     juiceShopPage = new JuiceShopPage(page);
+    loginPage = new LoginPage(page);
 
-    await juiceShopPage.openLoginPage();
+    await loginPage.navigateToLoginPage();
 });
 
 
-// ---------------- LOGIN ----------------
 
 When("I log in with valid credentials", async function () {
 
-    await juiceShopPage.login(
-        process.env.JUICESHOP_USERNAME!,
-        process.env.JUICESHOP_PASSWORD!
-    );
+    await loginPage.enterEmail(process.env.JUICESHOP_USERNAME!);
+
+    await loginPage.enterPassword(process.env.JUICESHOP_PASSWORD!);
+    
+    await loginPage.clickRememberMeCheckbox();
+
+    await loginPage.clickLoginButton();
 });
-
-
-// ---------------- ADD PRODUCTS ----------------
 
 When("I add two products to the basket", async function () {
 
     await juiceShopPage.addTwoProductsToBasket();
 });
-
-
-// ---------------- SHOPPING BASKET ----------------
 
 When("I open the shopping basket", async function () {
 
@@ -70,40 +64,34 @@ When("I click on the Checkout button", async function () {
 });
 
 
-// ---------------- DELIVERY ADDRESS ----------------
 
 Then("I should see the address page", async function () {
 
     await juiceShopPage.openAddNewAddress();
+    await page.waitForTimeout(2000);
 });
 
 Then("I fill in the delivery address details", async function () {
 
     await juiceShopPage.fillAddressDetails(addressData[0]);
+     await page.waitForTimeout(2000);
 });
 
-
-// ---------------- SELECT DELIVERY ADDRESS ----------------
 
 Then("I should select one address from the list", async function () {
 
     await juiceShopPage.selectDeliveryAddress();
-
-    await juiceShopPage.selectDeliveryMethod();
+await juiceShopPage.selectDeliveryMethod();
 });
 
-
-// ---------------- PAYMENT DETAILS ----------------
 
 Then("I should see the payment page", async function () {
 
     await juiceShopPage.openAddNewCard();
 
     await juiceShopPage.fillCardDetails(cardData[0]);
+    await page.waitForTimeout(2000);
 });
-
-
-// ---------------- SELECT PAYMENT AND PLACE ORDER ----------------
 
 Then("I should select a payment method", async function () {
 
@@ -114,8 +102,12 @@ Then("I should select a payment method", async function () {
     await juiceShopPage.verifyOrderSuccess();
 });
 
+Then("I should track my order", async function () {
 
-// ---------------- BROWSER CLEANUP ----------------
+    await juiceShopPage.trackOrder();
+    await page.waitForTimeout(3000);
+});
+
 
 After(async function () {
 

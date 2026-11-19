@@ -1,16 +1,5 @@
-import {
-    Given,
-    Then,
-    After,
-    setDefaultTimeout
-} from "@cucumber/cucumber";
-
-import {
-    chromium,
-    Browser,
-    Page
-} from "playwright";
-
+import {Given,Then, When,After,setDefaultTimeout} from "@cucumber/cucumber";
+import {chromium,Browser,Page} from "playwright";
 import { LoginPage } from "../../pages/LoginPage";
 
 setDefaultTimeout(60000);
@@ -20,7 +9,7 @@ export let page: Page;
 
 let loginPage: LoginPage;
 
-// Open OWASP Juice Shop login page
+
 Given("I open the OWASP Juice Shop login page", async function () {
 
     browser = await chromium.launch({
@@ -37,7 +26,7 @@ Given("I open the OWASP Juice Shop login page", async function () {
     await loginPage.navigateToLoginPage();
 });
 
-// Verify Login heading
+
 Then("I should see the {string} heading", async function (heading: string) {
 
     await loginPage.verifyHeading(heading);
@@ -60,8 +49,6 @@ Then("I should see the password field", async function () {
 
 });
 
-
-// Verify Remember me checkbox
 Then("I should see the Remember me checkbox", async function () {
 
     await loginPage.clickRememberMeCheckbox();
@@ -75,11 +62,40 @@ Then("I should see the {string} button", async function (buttonName: string) {
 
 });
 
-// Close browser after scenario
+
+
+
+
+// invalid login
+When("I enter invalid email and password", async function () {
+
+    await loginPage.enterEmail("abc@gmail.com");
+
+    await loginPage.enterPassword("pass@345");
+
+});
+
+
+When("I click the login button", async function () {
+
+    await loginPage.clickLoginButton();
+
+});
+
+// Verify invalid login error
+Then("I should see the invalid login error message", async function () {
+
+    await loginPage.verifyInvalidLoginMessage();
+
+});
+
 After(async function () {
 
     if (browser) {
         await browser.close();
     }
-
 });
+
+
+
+

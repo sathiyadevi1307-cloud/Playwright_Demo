@@ -8,121 +8,73 @@ test('Create And Read Booking', async () => {
 
     const bookingApi = new BookingApi();
 
-    const createResponse =
-        await bookingApi.createBooking(
-            bookingPayload
-        );
+    const createResponse = await bookingApi.createBooking(bookingPayload);
 
     expect(createResponse.status()).toBe(200);
 
-    const createBody =
-        await createResponse.json();
+    const createBody = await createResponse.json();
 
-    const bookingId =
-        createBody.bookingid;
+    const bookingId = createBody.bookingid;
 
     console.log("Booking Id :", bookingId);
 
-    const getResponse =
-        await bookingApi.getBooking(
-            bookingId
-        );
+    const getResponse = await bookingApi.getBooking(bookingId);
 
     expect(getResponse.status()).toBe(200);
 
-    const getBody =
-        await getResponse.json();
+    const getBody = await getResponse.json();
 
     console.log(getBody);
 
+    const tokenResponse = await bookingApi.generateToken();
 
+    const tokenBody = await tokenResponse.json();
 
+    const token =  tokenBody.token;
 
-    const tokenResponse =
-    await bookingApi.generateToken();
+    console.log("Token :", token);
 
-const tokenBody =
-    await tokenResponse.json();
+    const updateResponse = await bookingApi.updateBooking(bookingId,token,updatedBookingPayload);
 
-const token =
-    tokenBody.token;
+    expect(updateResponse.status()).toBe(200);
 
-console.log("Token :", token);
+    const updateBody =  await updateResponse.json();
 
-const updateResponse =
-    await bookingApi.updateBooking(
-        bookingId,
-        token,
-        updatedBookingPayload
-    );
+    console.log(updateBody);
 
-expect(updateResponse.status())
-    .toBe(200);
+    const deleteResponse = await bookingApi.deleteBooking(bookingId,token);
 
-const updateBody =
-    await updateResponse.json();
+    expect(deleteResponse.status()).toBe(201);
 
-console.log(updateBody);
+    console.log("Booking deleted successfully");
 
+    const verifyDeletedResponse = await bookingApi.getBooking(bookingId);
 
-
-const deleteResponse =
-    await bookingApi.deleteBooking(
-        bookingId,
-        token
-    );
-
-expect(deleteResponse.status())
-    .toBe(201);
-
-console.log(
-    "Booking deleted successfully"
-);
-
-const verifyDeletedResponse =
-    await bookingApi.getBooking(
-        bookingId
-    );
-
-expect(verifyDeletedResponse.status())
-    .toBe(404);
+    expect(verifyDeletedResponse.status()).toBe(404);
 
 });
+
 test('Partial Update Booking', async () => {
 
     const bookingApi = new BookingApi();
 
-    const createResponse =
-        await bookingApi.createBooking(
-            bookingPayload
-        );
+    const createResponse = await bookingApi.createBooking(bookingPayload);
 
-    const createBody =
-        await createResponse.json();
+    const createBody = await createResponse.json();
 
-    const bookingId =
-        createBody.bookingid;
+    const bookingId = createBody.bookingid;
 
-    const tokenResponse =
-        await bookingApi.generateToken();
+    const tokenResponse = await bookingApi.generateToken();
 
-    const tokenBody =
-        await tokenResponse.json();
+    const tokenBody = await tokenResponse.json();
 
-    const token =
-        tokenBody.token;
+    const token = tokenBody.token;
 
-    const patchResponse =
-        await bookingApi.partialUpdateBooking(
-            bookingId,
-            token
-        );
+    const patchResponse = await bookingApi.partialUpdateBooking(bookingId,token);
 
-    expect(patchResponse.status())
-        .toBe(200);
+    expect(patchResponse.status()).toBe(200);
 
-    const patchBody =
-        await patchResponse.json();
+    const patchBody = await patchResponse.json();
 
     console.log(patchBody);
 });
