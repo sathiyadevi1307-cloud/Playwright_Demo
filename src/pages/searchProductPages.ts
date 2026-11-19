@@ -302,4 +302,53 @@ export class SearchProductPage {
 
     console.log("Order Message:", text);
   }
+
+
+  // ---------------- NEGATIVE SEARCH SCENARIOS ----------------
+async navigateToHomePage() {
+
+    await this.page.goto('https://preview.owasp-juice.shop/#/', {
+      waitUntil: 'domcontentloaded'
+    });
+
+    // Verify homepage loaded
+    await expect(
+        this.page.getByRole('button', { name: 'Back to homepage' })
+    ).toBeVisible();
+}
+
+async clickSearchIconforInvalidSearches() {
+    const searchContainer = this.page.locator('.search-container');
+    const searchInput = this.page.locator('.search-container input[type="text"]');
+
+    if (!(await searchContainer.evaluate(element =>
+        element.classList.contains('search-container--visible')
+    ))) {
+        await this.page.getByRole('button', { name: 'Open search' }).click();
+    }
+
+    await expect(searchContainer).toHaveClass(/search-container--visible/);
+    await expect(searchInput).toBeVisible();
+}
+
+
+  async enterInvalidProductName(productName: string) {
+
+    console.log('Entered Text:', productName);
+
+    const searchContainer = this.page.locator('.search-container');
+    const searchInput = searchContainer.locator('input[type="text"]');
+
+    await expect(searchContainer).toHaveClass(/search-container--visible/);
+
+    await searchInput.fill(productName);
+    await searchInput.press('Enter');
+    await expect(this.page.getByText(/^Search Results -/)).toBeVisible();
+  }
+
+   // ---------------- NEGATIVE SEARCH SCENARIOS ----------------
+
+   async verifyNoMatchingProducts() {
+     await expect(this.page.locator('mat-card:has(button.btn-basket)')).toHaveCount(0, { timeout: 10000 });
+   }
 }

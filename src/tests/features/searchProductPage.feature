@@ -9,6 +9,7 @@ Feature: Product Search Functionality
     When I log in with credentials
     When I click on the search icon  
 
+  @positive
   Scenario: Verify product search with a valid product name
     When I click on the search icon
     Then I enter "Apple Juice" in the search bar
@@ -29,5 +30,27 @@ Feature: Product Search Functionality
 
     When I should be able to see the payment page
     Then I should be able to select a payment method
+
+
+  @negative
+Scenario: Verify search with an invalid product name
+    When I navigate to the home page
+    Then I click on the search icon for invalid searches
+    When I entered "XYZ12345" in the search bar
+    Then no matching products should be displayed
+
+@negative
+Scenario: Verify search with a product that does not exist
+    When I navigate to the home page
+    Then I click on the search icon for invalid searches
+    When I entered "Samsungabc" in the search bar
+    Then no matching products should be displayed
+
+@negative
+Scenario: Verify search with special characters
+    When I navigate to the home page
+    Then I click on the search icon for invalid searches
+    When I entered "@#$%^&*" in the search bar
+    Then no matching products should be displayed
 
   

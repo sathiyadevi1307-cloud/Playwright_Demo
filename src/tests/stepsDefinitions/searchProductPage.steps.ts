@@ -166,6 +166,31 @@ Then("I should be able to select a payment method", async function () {
 });
 
 
+// ---------------- NAVIGATE TO HOME PAGE ----------------
+When('I navigate to the home page', async function () {
+
+    await searchProductPage.navigateToHomePage();
+    
+
+});
+
+Then('I click on the search icon for invalid searches', async function () {
+    await searchProductPage.clickSearchIconforInvalidSearches();
+});
+
+When('I entered {string} in the search bar', async function (productName: string) {
+    console.log('Searching for:', productName);
+
+    await searchProductPage.enterInvalidProductName(productName);
+});
+// ---------------- NEGATIVE SEARCH SCENARIOS ----------------
+
+Then('no matching products should be displayed',
+async function () {
+
+    await searchProductPage.verifyNoMatchingProducts();
+
+});
 // ---------------- BROWSER CLEANUP ----------------
 
 After(async function () {
@@ -174,4 +199,3 @@ After(async function () {
     await browser.close();
   }
 });
-
