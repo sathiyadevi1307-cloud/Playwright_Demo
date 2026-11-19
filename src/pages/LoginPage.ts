@@ -1,5 +1,6 @@
 import { Page, expect } from "@playwright/test";
 
+
 export class LoginPage {
     constructor(private page: Page) {}
 
@@ -14,47 +15,40 @@ export class LoginPage {
     }
 
     async verifyHeading(heading: string) {
-        await expect(
-            this.page.getByRole("heading", {
-                name: heading,
-                exact: true,
-            })
-        ).toBeVisible();
+        await expect(this.page.getByRole("heading", {name: heading,exact: true,})).toBeVisible();
     }
 
     async enterEmail(username: string) {
-    await expect(
-        this.page.locator('input[id="email"]')
-    ).toBeVisible();
+        await expect(this.page.locator('input[id="email"]')).toBeVisible();
+        await this.page.locator('input[id="email"]').fill(username);
+    }
 
-    await this.page
-        .locator('input[id="email"]')
-        .fill(username);
-}
-
-async enterPassword(password: string) {
-    await expect(
-        this.page.locator("#password")
-    ).toBeVisible();
-
-    await this.page
-        .locator('input[id="password"]')
-        .fill(password);
-
-    await this.page.waitForTimeout(3000);
-}
+    async enterPassword(password: string) {
+        await expect(this.page.locator("#password")).toBeVisible();
+        await this.page.locator('input[id="password"]').fill(password);
+        await this.page.waitForTimeout(3000);
+    }
 
     async clickRememberMeCheckbox() {
-        await this.page
-            .locator("//input[@type='checkbox']")
-            .click();
-
+        await this.page.locator("//input[@type='checkbox']").click();
         await this.page.waitForTimeout(10000);
     }
 
     async clickLoginButton() {
-        await this.page
-            .locator("//span[text()=' Log in ']")
-            .click();
+        await this.page.locator("//span[text()=' Log in ']").click();
     }
+
+
+// Verify invalid login error message
+async verifyInvalidLoginMessage() {
+
+    const errorMessage = this.page.getByText(
+        "Invalid email or password.",
+        { exact: false }
+    );
+
+    await expect(errorMessage).toBeVisible({ timeout: 10000 });
 }
+
+}
+

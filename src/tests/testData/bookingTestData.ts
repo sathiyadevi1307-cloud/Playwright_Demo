@@ -6,7 +6,7 @@ export const bookingTestData = [
     },
 
     {
-        firstname: "Sakthi",
+        firstname: "Demo",
         lastname: "Automation"
     },
 

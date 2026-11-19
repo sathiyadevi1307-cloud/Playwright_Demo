@@ -1,11 +1,8 @@
 export const bookingPayload = {
 
     firstname: "Manisha",
-
     lastname: "Durai",
-
     totalprice: 1000,
-
     depositpaid: true,
 
     bookingdates: {

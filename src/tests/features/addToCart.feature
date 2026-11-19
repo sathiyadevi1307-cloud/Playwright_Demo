@@ -18,5 +18,6 @@ Feature: OWASP Juice Shop Shopping Basket and Checkout
     Then I should select one address from the list
     Then I should see the payment page
     Then I should select a payment method
+    Then I should track my order
     
     

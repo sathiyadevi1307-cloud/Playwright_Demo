@@ -1,226 +1,161 @@
 [
   {
-    "description": "  As a user of OWASP Juice Shop\n  I want to search for products\n  So that I can find my desired products easily",
+    "description": "  As a registered Juice Shop customer\n  I want to add products to my basket\n  So that I can purchase multiple products",
     "elements": [
       {
         "description": "",
-        "id": "product-search-functionality;verify-product-search-with-a-valid-product-name",
+        "id": "owasp-juice-shop-shopping-basket-and-checkout;add-two-products-to-the-basket-and-proceed-to-checkout",
         "keyword": "Scenario",
         "line": 12,
-        "name": "Verify product search with a valid product name",
+        "name": "Add two products to the basket and proceed to checkout",
         "steps": [
           {
             "result": {
               "status": "passed",
-              "duration": 15208344499
+              "duration": 16330273199
             },
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
-            "name": "I open the login page",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:18"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 13288110700
-            },
-            "arguments": [],
-            "keyword": "When ",
             "line": 9,
-            "name": "I log in with credentials",
+            "name": "I open the OWASP Juice Shop home page",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:39"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:24"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 134105499
+              "duration": 3703495300
             },
             "arguments": [],
             "keyword": "When ",
             "line": 10,
-            "name": "I click on the search icon",
+            "name": "I log in with valid credentials",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:57"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:46"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 78275000
+              "duration": 1529698400
             },
             "arguments": [],
             "keyword": "When ",
             "line": 13,
-            "name": "I click on the search icon",
+            "name": "I add two products to the basket",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:57"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:62"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 200452100
+              "duration": 254356700
             },
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "And ",
             "line": 14,
-            "name": "I enter \"Apple Juice\" in the search bar",
+            "name": "I open the shopping basket",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:71"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:70"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 399068999
+              "duration": 6709016299
             },
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "When ",
             "line": 15,
-            "name": "the search results should display products matching \"Apple Juice\"",
+            "name": "I click on the Checkout button",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:79"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:75"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 1483164999
+              "duration": 2207091900
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
-            "name": "I click on the add to cart button for the product \"Apple Juice\"",
+            "name": "I should see the address page",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:87"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:82"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 2118282200
+              "duration": 6654228099
             },
             "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I navigate to the shopping cart",
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I fill in the delivery address details",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:95"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:88"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 6639900
+              "duration": 801980199
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I should select one address from the list",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:97"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2626777099
             },
             "arguments": [],
             "keyword": "Then ",
             "line": 19,
-            "name": "I should see \"Apple Juice\" in the cart",
+            "name": "I should see the payment page",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:101"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:107"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 53478300
+              "duration": 1098646999
             },
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should select a payment method",
+            "match": {
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:117"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 4561762499
+            },
+            "arguments": [],
+            "keyword": "Then ",
             "line": 21,
-            "name": "I increase the quantity of \"Apple Juice\" to 2",
+            "name": "I should track my order",
             "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:109"
+              "location": "src\\tests\\stepsDefinitions\\addToCart.steps.ts:126"
             }
           },
           {
             "result": {
               "status": "passed",
-              "duration": 107203099
-            },
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I click on the checkout button",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:117"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 163084900
-            },
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I should be on the address page",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:125"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 2410136099
-            },
-            "arguments": [],
-            "keyword": "When ",
-            "line": 27,
-            "name": "I enter the delivery address details",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:131"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 9174454000
-            },
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 28,
-            "name": "I should be able to select the address from the list",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:141"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 8579978600
-            },
-            "arguments": [],
-            "keyword": "When ",
-            "line": 30,
-            "name": "I should be able to see the payment page",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:149"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 8231077199
-            },
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 31,
-            "name": "I should be able to select a payment method",
-            "match": {
-              "location": "src\\tests\\stepsDefinitions\\searchProductPage.steps.ts:159"
-            }
-          },
-          {
-            "result": {
-              "status": "passed",
-              "duration": 1465991099
+              "duration": 365400
             },
             "keyword": "After",
             "hidden": true
@@ -228,7 +163,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 189500
+              "duration": 261999
             },
             "keyword": "After",
             "hidden": true
@@ -236,7 +171,15 @@
           {
             "result": {
               "status": "passed",
-              "duration": 192899
+              "duration": 1287437599
+            },
+            "keyword": "After",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 314299
             },
             "keyword": "After",
             "hidden": true
@@ -246,11 +189,11 @@
         "type": "scenario"
       }
     ],
-    "id": "product-search-functionality",
-    "line": 1,
+    "id": "owasp-juice-shop-shopping-basket-and-checkout",
+    "line": 2,
     "keyword": "Feature",
-    "name": "Product Search Functionality",
+    "name": "OWASP Juice Shop Shopping Basket and Checkout",
     "tags": [],
-    "uri": "src\\tests\\features\\searchProductPage.feature"
+    "uri": "src\\tests\\features\\addToCart.feature"
   }
 ]
