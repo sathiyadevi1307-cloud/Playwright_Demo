@@ -1,6 +1,6 @@
 import {Given,When,Then,After,setDefaultTimeout} from "@cucumber/cucumber";
 import { chromium, Browser, Page } from "playwright";
-import { JuiceShopPage } from '../../pages/juiceShop';
+import { JuiceShopPage } from '../../pages/addToCart';
 import { addressData } from '../testData/addressDetails';
 import { cardData } from '../testData/cardData';
 import { LoginPage } from "../../pages/LoginPage";
