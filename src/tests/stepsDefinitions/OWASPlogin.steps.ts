@@ -12,10 +12,14 @@ let loginPage: LoginPage;
 
 Given("I open the OWASP Juice Shop login page", async function () {
 
-    browser = await chromium.launch({
-        channel: "msedge",
-        headless: false
-    });
+    const isCI = process.env.CI === 'true';
+
+browser = await chromium.launch({
+    channel: "msedge",
+    headless: isCI,
+    args: isCI ? [] : ['--start-maximized']
+});
+
 
     const context = await browser.newContext();
 
@@ -63,10 +67,7 @@ Then("I should see the {string} button", async function (buttonName: string) {
 });
 
 
-
-
-
-// invalid login
+//invalid scenario
 When("I enter invalid email and password", async function () {
 
     await loginPage.enterEmail("abc@gmail.com");
@@ -82,10 +83,8 @@ When("I click the login button", async function () {
 
 });
 
-// Verify invalid login error
 Then("I should see the invalid login error message", async function () {
-
-    await loginPage.verifyInvalidLoginMessage();
+await loginPage.verifyInvalidLoginMessage();
 
 });
 
