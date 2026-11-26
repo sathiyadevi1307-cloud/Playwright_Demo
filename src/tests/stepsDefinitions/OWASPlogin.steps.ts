@@ -13,13 +13,13 @@ let loginPage: LoginPage;
 Given("I open the OWASP Juice Shop login page", async function () {
 
     const isCI = process.env.CI === 'true';
-
-browser = await chromium.launch({
-    channel: "msedge",
-    headless: isCI,
-    args: isCI ? [] : ['--start-maximized']
-});
-
+    
+        browser = await chromium.launch({
+        channel: "msedge",
+        headless: isCI,
+        args: isCI ? [] : ['--start-maximized']
+    });
+    
 
     const context = await browser.newContext();
 

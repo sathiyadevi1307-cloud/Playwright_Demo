@@ -21,14 +21,14 @@ let shoppingCart: ShoppingCart;
 Given(
     "I open the OWASP Juice Shop home page for basket management",
     async function () {
+const isCI = process.env.CI === 'true';
 
-    const isCI = process.env.CI === 'true';
-
-browser = await chromium.launch({
+    browser = await chromium.launch({
     channel: "msedge",
     headless: isCI,
     args: isCI ? [] : ['--start-maximized']
 });
+
 
         const context = await browser.newContext({
             viewport: null

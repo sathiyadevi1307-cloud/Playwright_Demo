@@ -17,11 +17,14 @@ let searchProductPage: SearchProductPage;
 
 Given("I open the login page", async function () {
 
-  browser = await chromium.launch({
-    channel: "msedge",
-    headless: false,
-    args: ['--start-maximized']
+  const isCI = process.env.CI === 'true';
+  
+      browser = await chromium.launch({
+      channel: "msedge",
+      headless: isCI,
+      args: isCI ? [] : ['--start-maximized']
   });
+  
 
   const context = await browser.newContext({ viewport: null });
 

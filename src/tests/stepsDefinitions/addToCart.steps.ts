@@ -17,12 +17,13 @@ let loginPage: LoginPage;
 
 Given("I open the OWASP Juice Shop home page", async function () {
 
-    browser = await chromium.launch({
-        channel: "msedge",
-        headless: false,
-        args: ['--start-maximized']
-    });
+    const isCI = process.env.CI === 'true';
 
+browser = await chromium.launch({
+    channel: "msedge",
+    headless: isCI,
+    args: isCI ? [] : ['--start-maximized']
+});
     const context = await browser.newContext({
         viewport: null
     });
@@ -42,7 +43,7 @@ When("I log in with valid credentials", async function () {
     await loginPage.enterEmail(process.env.JUICESHOP_USERNAME!);
 
     await loginPage.enterPassword(process.env.JUICESHOP_PASSWORD!);
-    
+
     await loginPage.clickRememberMeCheckbox();
 
     await loginPage.clickLoginButton();
